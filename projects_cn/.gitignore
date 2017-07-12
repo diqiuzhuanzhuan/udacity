@@ -2,4 +2,4 @@
 *.zip
 .ipynb_checkpoints/
 *.swp
-*.history
+*.history   
