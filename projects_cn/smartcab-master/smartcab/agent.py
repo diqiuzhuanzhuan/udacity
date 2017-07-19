@@ -101,7 +101,7 @@ class LearningAgent(Agent):
         if not self.learning:
             return
         if state not in self.Q:
-            self.Q[state] = dict((j, 0.0) for j in self.valid_actions)
+            self.Q[state] = {j: 0.0 for j in self.valid_actions}
         return
 
 
@@ -120,7 +120,7 @@ class LearningAgent(Agent):
         # When learning, choose a random action with 'epsilon' probability
         #   Otherwise, choose an action with the highest Q-value for the current state
         rand_num = random.random()
-        if self.learning is True:
+        if self.learning:
             if rand_num < self.epsilon:
                 action = random.choice(self.valid_actions)
             else:
@@ -179,7 +179,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning=True, alpha=0.002)
+    agent = env.create_agent(LearningAgent, learning=True, alpha=0.003)
     
     ##############
     # Follow the driving agent
